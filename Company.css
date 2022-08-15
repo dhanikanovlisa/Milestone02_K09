@@ -1,3 +1,13 @@
+html,body
+{
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px !important;
+    overflow-x: hidden; 
+}
+
 .company-wrapper{
     width: 100%;
     height:1800px;
@@ -68,7 +78,7 @@
 
 .company-image {
     position: relative;
-    margin-top: -10px;
+    margin-top: -12px;
     margin-bottom: -50px;
 }
 .company-cards-wrapper{
@@ -77,6 +87,14 @@
     top: 120px;
     left: 50px;
 }
+
+.cards-container {
+    place-items: center;
+    margin: auto;
+    margin-left: 3%;
+    justify-content: center;
+}
+
 .company-card {
     overflow: hidden;
     display:grid;
