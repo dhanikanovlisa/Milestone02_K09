@@ -6,34 +6,17 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { Link } from 'react-router-dom'
 
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const NAME_REGEX = /^[a-zA-Z]+ [a-zA-Z]+$/;
+
 
 const Signup = () => {
   const userRef = useRef();
   const errRef = useRef();
 
   const [name, setName] = useState('');
-  const [validName, setValidName] = useState(false);
-  const [nameFocus, setNameFocus] = useState(false);
-
   const [email, setEmail] = useState('');
-  const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
-
   const [user, setUser] = useState('');
-  const [validUser, setValidUser] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
-
   const [pwd, setPwd] = useState('');
-  const [validPwd, setValidPwd] = useState(false);
-  const [pwdFocus, setPwdFocus] = useState(false);
-
   const [matchpwd, setMatchPwd] = useState('');
-  const [validMatch, setValidMatch] = useState(false);
-  const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
@@ -43,46 +26,16 @@ const Signup = () => {
   }, [])
 
   useEffect(() => {
-    const result = setValidName(NAME_REGEX.test(name));
-    console.log(result);
-    console.log(name);
-    setValidName(result);
-  }, [name])
-
-
-  useEffect(() => {
-    const result = setValidUser(USER_REGEX.test(user));
-    console.log(result);
-    console.log(user);
-    setValidUser(result);
-  }, [user])
-
-  useEffect(() => {
-    const result = setValidEmail(EMAIL_REGEX.test(email));
-    console.log(result);
-    console.log(email);
-    setValidEmail(result);
-  }, [email])
-  
-  useEffect(() => {
-    const result = setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchpwd);
-    console.log(result);
     console.log(pwd);
     const match = pwd === matchpwd;
-    setMatchPwd(match);
+    setMatchPwd(matchpwd);
   }, [pwd, matchpwd])
 
-  useEffect(() => {
-    setErrMsg('');
-  }, [user, pwd, matchpwd])
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
-      setErrMsg("Invalid Entry");
+    if (pwd !== matchpwd) {
+      setErrMsg(<p className='errMsg'>Password do not match</p>);
       return;
     }
     console.log(user, pwd);
@@ -94,11 +47,10 @@ const Signup = () => {
 return (
   <>
     {success ? (
-      <section>
-        <h1>Success!</h1>
-          <p>
-            <Link to = "/Login">Sign In</Link>
-          </p>
+      <section className='signupContain'>
+        <div className='signupTitle'>Success!</div>
+            <button className='buttonToHomes'><a href = "/Login" className='linkTo'>Log In</a></button>
+      
       </section>
       ) : (
       <div className='signup-container'>
@@ -118,10 +70,6 @@ return (
                   onChange={(e) => setName(e.target.value)}
                   value = {name}
                   required
-                  aria-invalid={validName ? "false" : "true"}
-                  aria-describedby = 'confirmname'
-                  onFocus={() => setNameFocus(true)}
-                  onBlur={() => setNameFocus(false)}
                 >
                 </input>
               </label>
@@ -138,10 +86,7 @@ return (
                   onChange={(e) => setEmail(e.target.value)}
                   value = {email}
                   required
-                  aria-invalid={validEmail ? "false" : "true"}
-                  aria-describedby = 'confirmemail'
-                  onFocus={() => setEmailFocus(true)}
-                  onBlur={() => setEmailFocus(false)}
+
                 >
                 </input>
               </label>
@@ -160,10 +105,7 @@ return (
                   onChange={(e) => setUser(e.target.value)}
                   value = {user}
                   required
-                  aria-invalid={validUser ? "false" : "true"}
-                  aria-describedby = 'uidnote'
-                  onFocus={() => setUserFocus(true)}
-                  onBlur={() => setUserFocus(false)}
+
                 >
                 </input>
               </label>
@@ -183,10 +125,7 @@ return (
                   onChange={(e) => setPwd(e.target.value)}
                   value={pwd}
                   required
-                  aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby = 'pwdnote'
-                  onFocus={() => setPwdFocus(true)}
-                  onBlur={() => setPwdFocus(false)}
+
                 >
                 </input>
               </label>
@@ -201,21 +140,17 @@ return (
                   id='password2'
                   onChange={(e) => setMatchPwd(e.target.value)}
                   required
-                  value = {pwd}
-                  aria-invalid={validMatch ? "false" : "true"}
-                  aria-describedby = 'confirmpwd'
-                  onFocus={() => setMatchFocus(true)}
-                  onBlur={() => setMatchFocus(false)}
+                  value = {matchpwd}
                 >
                 </input>
               </label>
             </div>
-
-          </form>
-
-          <button className= "signup-button" disabled={!validName ||!validUser || !validPwd || !validMatch ? true : false} >
+            <button className= "signup-button" type='submit'>
             Sign Up
           </button>
+          </form>
+
+        
         </div>
         <div className='to-login'>
           Already registered? <span className="line"><Link to="/Login">Log In</Link></span>
