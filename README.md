@@ -27,7 +27,8 @@ Nurshafa Qanita(16521520) - Front-end
 3. Buka aplikasi `Visual Studio Code` atau code editor lainnya
 4. Buat terminal baru dari folder `beeastudentv1` di tempat folder kalian mendownload
 5. Ketik `cd beeastudentv1` lalu klik enter
-6. Ketika `npm start` dan web app akan terbuka pada local host komputer masing-masing
+6. Ketik `npm start` dan web app akan terbuka pada local host komputer masing-masing
+7. Jika terdapat eror, ketik `npm install react-scripts -save` lalu enter dan ketik `npm start` lagi
 
 ## Fitur yang terdapat pada aplikasi
 ### 1. Landing Page  
