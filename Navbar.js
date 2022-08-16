@@ -67,7 +67,7 @@ function Navbar() {
                     </Link>
                 </li>
             </ul>
-            {button && <button className='nav-links-mobile'><Link to="/Login">LOG IN</Link></button>}
+            {button && <button className='nav-links-mobile'><a href="/Login" className='loginNavbar'>LOG IN</a></button>}
         </div>
     </nav>
     </header>

@@ -42,19 +42,19 @@ function Footer() {
                 <br></br>
                 <div className='socmed-group'>
                     <div className='footer-linked-in'>
-                        <NavLink to="/">
+                        <a href="https://www.linkedin.com/" target="_blank">
                             <FontAwesomeIcon icon={faLinkedin} size="2x" className='footer-linked-in'></FontAwesomeIcon>
-                        </NavLink>
+                        </a>
                     </div>
                     <div className='footer-twitter'>
-                        <NavLink to="/">
+                        <a href="https://twitter.com/explore" target="_blank">
                             <FontAwesomeIcon icon={faSquareTwitter} size="2x" className='footer-twitter'></FontAwesomeIcon>
-                        </NavLink>
+                        </a>
                     </div>
                     <div className='footer-instagram'>
-                        <NavLink to ="https://www.instagram.com">
+                        <a href ="https://www.instagram.com" target="_blank">
                         <FontAwesomeIcon icon={faSquareInstagram} size="2x" className='footer-instagram'></FontAwesomeIcon>
-                        </NavLink>
+                        </a>
                     </div>
                 </div>
             </div>

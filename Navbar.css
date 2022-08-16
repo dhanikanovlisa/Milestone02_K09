@@ -60,10 +60,6 @@ font-size: 16px;
 font-weight: bold;
 }
 
-.nav-links:hover {
-  color: #FEC619;
-  transition: 0.3s;
-}
 
 .fa-bars {
 color: #fff;
@@ -97,6 +93,10 @@ left: 30px;
 
 .menu-icon {
 display: none;
+}
+
+.loginNavbar:link{
+  text-decoration: none;
 }
 
 @media screen and (max-width: 960px) {
