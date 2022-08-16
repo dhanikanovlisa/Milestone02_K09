@@ -67,10 +67,6 @@ const Signup = () => {
   useEffect(() => {
     const result = setValidPwd(PWD_REGEX.test(pwd));
     setValidMatch(pwd === matchpwd);
-    console.log(result);
-    console.log(pwd);
-    const match = pwd === matchpwd;
-    setMatchPwd(match);
   }, [pwd, matchpwd])
 
   useEffect(() => {
@@ -103,7 +99,7 @@ return (
       ) : (
       <div className='signup-container'>
         <div className='image-container'>
-          <img src='./images/components1.png'></img></div>
+          </div>
         <div className='signup-rectangle'>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           <img src='./images/logo.png' className='signup-logo'></img>
@@ -125,10 +121,7 @@ return (
                 >
                 </input>
               </label>
-              <p id="confirmname" className={validName && !nameFocus ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            ntar
-              </p>
+
             </div>
 
             <div className='form-input'>
@@ -148,10 +141,7 @@ return (
                 >
                 </input>
               </label>
-              <p id="confirmemail" className={validEmail && !emailFocus ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            ntar
-                        </p>
+
             </div>
 
             <div className='form-input'>
@@ -173,12 +163,7 @@ return (
                 >
                 </input>
               </label>
-              <p id="uidnote" className={userFocus && user && !validUser ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            4 to 24 characters.<br />
-                            Must begin with a letter.<br />
-                            Letters, numbers, underscores, hyphens allowed.
-                        </p>
+
             </div>
 
 
@@ -201,23 +186,18 @@ return (
                 >
                 </input>
               </label>
-              <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                        </p>
+
             </div>
 
             <div className='form-input'>
               <label htmlFor='password2' className='form-label-password2'>
                 Confirm Password
                 <input
-                  type='password2'
+                  type='password'
                   id='password2'
                   onChange={(e) => setMatchPwd(e.target.value)}
+                  value = {matchpwd}
                   required
-                  value = {pwd}
                   aria-invalid={validMatch ? "false" : "true"}
                   aria-describedby = 'confirmpwd'
                   onFocus={() => setMatchFocus(true)}
@@ -226,10 +206,7 @@ return (
                 </input>
               </label>
             </div>
-            <p id="confirmpwd" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
-                            <FontAwesomeIcon icon={faInfoCircle} />
-                            Must match the first password input field.
-            </p>
+
           </form>
 
           <button className= "signup-button" disabled={!validName ||!validUser || !validPwd || !validMatch ? true : false} >
