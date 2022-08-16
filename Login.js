@@ -32,11 +32,11 @@ const Login = () => {
   return (
     <>
       {success ? (
-                <section>
-                    <h1>You are logged in!</h1>
+                <section className='loginredirect'>
+                    <div className='loggedIn'>You are logged in!</div>
                     <br />
                     <p>
-                        <a href="/">Go to Home</a>
+                        <button className='buttonToHome'><a href="/" className='goHome'>Go to Home</a></button>
                     </p>
                 </section>
             ) : (
