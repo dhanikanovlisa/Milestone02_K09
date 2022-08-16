@@ -80,18 +80,17 @@
 .footer-linked-in{
     position: relative;
     left: 0%;
+    color: white;
 }
 
 .footer-twitter{
     position: relative;
     left: 20%;
+    color: white;
 }
 
 .footer-instagram{
     position: relative;
     left: 40%;
-}
-
-a:link, a:visited{
     color: white;
 }
